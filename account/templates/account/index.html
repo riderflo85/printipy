@@ -1,3 +1,51 @@
 {% extends 'account/base.html' %}
+
 {% block content %}
+
+<header class="">
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="card limit-card no-border">
+                    <div class="card-header text-center no-border">
+                        <h3 class="text-light">Connectez-vous a votre compte PrintiPy pour commencer a controler et a surveiller votre imprimante</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <form action="">
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-danger border-danger"><i class="fas fa-user-alt text-white"></i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Pseudo ou email">
+                            </div>
+
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-danger border-danger"><i class="fas fa-unlock-alt text-white"></i></span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Mot de passe">
+                            </div>
+
+                            <div class="form-group">
+                                <input class="btn btn-danger float-right" type="submit" value="Connexion">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card-footer no-border">
+                        <div class="d-flex justify-content-center links text-white">
+                            Vous n'avez pas de compte ?<a href="#"> Inscrivez-vous</a>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <a href="#">Mot de passe oublié ?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+
 {% endblock content %}

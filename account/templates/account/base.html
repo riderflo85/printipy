@@ -3,7 +3,7 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>Connection</title>
+        <title>PrintiPy Controle</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         {% load static %}
@@ -11,17 +11,17 @@
     </head>
 
     <body>
-        <header class="metahead">
+        <nav class="">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 pt-3 d-flex justify-content-between">
+                    <div class="col-12 pt-3 px-5 text-center d-flex justify-content-between">
                         <img src="{% static 'account/img/logoPrintiPy.png' %}" alt="logo" class="img-fluid">
-                        <h1 class="text-info align-self-center">Controler l'intégralité de votre imprimante 3D</h1>
+                        <h1 class="text-warning align-self-center"><i class="text-primary">PrintiPy Controle</i> vous permet de controlez l'intégralité de votre imprimante 3D</h1>
                         <a class="align-self-center" href="#"><i class="fas fa-street-view fa-3x"></i></a>
                     </div>
                 </div>
             </div>
-        </header>
+        </nav>
 
 
         {% block content %}

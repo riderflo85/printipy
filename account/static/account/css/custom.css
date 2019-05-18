@@ -1,13 +1,31 @@
 body
 {
-    height: 100vh;
     background: linear-gradient(to bottom, rgba(87, 92, 66, 0.5) 0%, rgba(87, 92, 66, 0.5) 100%), url("../img/plexus-beautiful.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-/* header.metahead
+header
 {
-    height: 70px;
-} */
+    height: 88.7vh;
+}
+
+.limit-card
+{
+    background-color: rgba(255, 255, 255, 0);
+    width: 40%;
+}
+
+.no-border
+{
+    border: 0;
+}
+
+@media (max-width: 1200px) {
+    .limit-card
+    {
+        background-color: rgba(255, 255, 255, 0);
+        width: 80%;
+    }
+}
