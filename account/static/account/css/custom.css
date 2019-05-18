@@ -1,14 +1,25 @@
 body
 {
-    background: linear-gradient(to bottom, rgba(87, 92, 66, 0.5) 0%, rgba(87, 92, 66, 0.5) 100%), url("../img/plexus-beautiful.jpeg");
+    /* background: linear-gradient(to bottom, rgba(87, 92, 66, 0.5) 0%, rgba(87, 92, 66, 0.5) 100%), url("../img/plexus-beautiful.jpeg"); */
+    background-image: url("../img/abstract-motion.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-header
-{
-    height: 88.7vh;
+@media (max-width: 2560px) {
+    header
+    {
+        height: 92vh;
+    }
+
+}
+
+@media (min-width: 1920px) {
+    header
+    {
+        height: 88.7vh;
+    }
 }
 
 .limit-card
