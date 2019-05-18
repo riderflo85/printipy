@@ -22,10 +22,25 @@ header
     border: 0;
 }
 
+.big-menu
+{
+    height: 50vh;
+}
+
+.no-deco:hover
+{
+    text-decoration: none;
+}
+
 @media (max-width: 1200px) {
     .limit-card
     {
         background-color: rgba(255, 255, 255, 0);
         width: 80%;
+    }
+
+    .big-menu
+    {
+        height: 40vh;
     }
 }
