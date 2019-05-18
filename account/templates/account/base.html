@@ -11,13 +11,13 @@
     </head>
 
     <body>
-        <nav class="">
+        <nav>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 pt-3 px-5 text-center d-flex justify-content-between">
-                        <img src="{% static 'account/img/logoPrintiPy.png' %}" alt="logo" class="img-fluid">
+                        <a href="{% url 'account:index' %}"><img src="{% static 'account/img/logoPrintiPy.png' %}" alt="logo" class="img-fluid"></a>
                         <h1 class="text-warning align-self-center"><i class="text-primary">PrintiPy Controle</i> vous permet de controlez l'intégralité de votre imprimante 3D</h1>
-                        <a class="align-self-center" href="#"><i class="fas fa-street-view fa-3x"></i></a>
+                        <a class="align-self-center" href="{% url 'account:minidashboard' %}"><i class="fas fa-street-view fa-3x"></i></a>
                     </div>
                 </div>
             </div>
