@@ -1,0 +1,69 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+
+<header>
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="card limit-card no-border">
+                    <div class="card-header text-center no-border">
+                        <h3 class="text-light">Créez-vous un compte PrintiPy pour controler et surveiller votre imprimante.<br>C'est gratuit !</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <form action="">
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-danger border-danger"><i class="fas fa-user text-white"></i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Nom">
+                            </div>
+
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-danger border-danger"><i class="fas fa-user text-white"></i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Prénom">
+                            </div>
+
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-danger border-danger"><i class="fas fa-user-circle text-white"></i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Pseudo">
+                            </div>
+
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-danger border-danger"><i class="fas fa-at text-white"></i></span>
+                                </div>
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-danger border-danger"><i class="fas fa-unlock-alt text-white"></i></span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Mot de passe">
+                            </div>
+
+                            <div class="form-group">
+                                <input class="btn btn-danger float-right" type="submit" value="Inscription">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card-footer no-border">
+                        <div class="d-flex justify-content-center links text-white">
+                            Vous avez déjà un compte ?<a href="{% url 'account:index' %}"> Connectez-vous</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+{% endblock content %}

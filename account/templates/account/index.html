@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<header class="">
+<header>
     <div class="container-fluid h-100">
         <div class="row h-100">
             <div class="col-12 d-flex align-items-center justify-content-center">
@@ -35,7 +35,7 @@
 
                     <div class="card-footer no-border">
                         <div class="d-flex justify-content-center links text-white">
-                            Vous n'avez pas de compte ?<a href="#"> Inscrivez-vous</a>
+                            Vous n'avez pas de compte ?<a href="{% url 'account:sign_up' %}"> Inscrivez-vous</a>
                         </div>
                         <div class="d-flex justify-content-center">
                             <a href="#">Mot de passe oublié ?</a>
