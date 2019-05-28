@@ -11,26 +11,37 @@
                         <h3 class="text-light">Connectez-vous a votre compte PrintiPy pour commencer a controler et a surveiller votre imprimante</h3>
                     </div>
 
-                    <div class="card-body">
-                        <form action="">
+                    <div class="card-body text-center">
+                        {% if error %}
+                        <h3 class="text-danger">Utilisateur incorrect ou mot de passe invalide</h3>
+                        {% endif %}
+
+                        {% if user.is_authenticated %}
+                        <h3 class="text-white">Vous êtes connectez {{ user.username }}!</h3>
+                        {% else %}
+                        <form action="{% url 'account:index' %}" method='post'>
+                        {% csrf_token %}
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-danger border-danger"><i class="fas fa-user-alt text-white"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Pseudo ou email">
+                                {{ form.pseudo }}
+                                {% comment %} <input type="text" class="form-control" placeholder="Pseudo ou email"> {% endcomment %}
                             </div>
 
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-danger border-danger"><i class="fas fa-unlock-alt text-white"></i></span>
                                 </div>
-                                <input type="password" class="form-control" placeholder="Mot de passe">
+                                {{ form.password }}
+                                {% comment %} <input type="password" class="form-control" placeholder="Mot de passe"> {% endcomment %}
                             </div>
 
                             <div class="form-group">
                                 <input class="btn btn-danger float-right" type="submit" value="Connexion">
                             </div>
                         </form>
+                        {% endif %}
                     </div>
 
                     <div class="card-footer no-border">
