@@ -11,47 +11,67 @@
                         <h3 class="text-light">Créez-vous un compte PrintiPy pour controler et surveiller votre imprimante.<br>C'est gratuit !</h3>
                     </div>
 
-                    <div class="card-body">
-                        <form action="">
+                    <div class="card-body text-center">
+                    {% if errors %}
+                        <div>
+                            {% for key, error in errors %}
+                            {% autoescape off %}
+                                {{ error }}
+                            {% endautoescape %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    {% if new_user.is_active %}
+                        <h3 class="text-success">Compte créé avec succès</h3>
+                        {% else %}
+                        <form action="{% url 'account:sign_up' %}" method='post'>
+                        {% csrf_token %}
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-danger border-danger"><i class="fas fa-user text-white"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Nom">
+                                {{ form.last_name }}
+                                {% comment %} <input type="text" class="form-control" placeholder="Nom"> {% endcomment %}
                             </div>
 
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-danger border-danger"><i class="fas fa-user text-white"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Prénom">
+                                {{ form.first_name }}
+                                {% comment %} <input type="text" class="form-control" placeholder="Prénom"> {% endcomment %}
                             </div>
 
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-danger border-danger"><i class="fas fa-user-circle text-white"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Pseudo">
+                                {{ form.pseudo }}
+                                {% comment %} <input type="text" class="form-control" placeholder="Pseudo"> {% endcomment %}
                             </div>
 
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-danger border-danger"><i class="fas fa-at text-white"></i></span>
                                 </div>
-                                <input type="email" class="form-control" placeholder="Email">
+                                {{ form.email }}
+                                {% comment %} <input type="email" class="form-control" placeholder="Email"> {% endcomment %}
                             </div>
 
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-danger border-danger"><i class="fas fa-unlock-alt text-white"></i></span>
                                 </div>
-                                <input type="password" class="form-control" placeholder="Mot de passe">
+                                {{ form.password }}
+                                {% comment %} <input type="password" class="form-control" placeholder="Mot de passe"> {% endcomment %}
                             </div>
 
                             <div class="form-group">
                                 <input class="btn btn-danger float-right" type="submit" value="Inscription">
                             </div>
                         </form>
+                        {% endif %}
                     </div>
 
                     <div class="card-footer no-border">

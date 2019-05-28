@@ -17,7 +17,8 @@
                         {% endif %}
 
                         {% if user.is_authenticated %}
-                        <h3 class="text-white">Vous êtes connectez {{ user.username }}!</h3>
+                        <h3 class="text-success">Vous êtes connectez {{ user.username }}!</h3>
+                        <p class="lead text-info"><a href="{% url 'account:sign_out' %}">Déconnexion ?</a></p>
                         {% else %}
                         <form action="{% url 'account:index' %}" method='post'>
                         {% csrf_token %}
