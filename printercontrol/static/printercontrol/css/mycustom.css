@@ -1,0 +1,70 @@
+body
+{
+    background-color: rgb(230, 247,255);
+    height: 100vh;
+}
+
+nav
+{
+    width: 21vh;
+    height: 100vh;
+    border-width: 0px 1px 0px 0px;
+    border-style: solid;
+    border-color: rgb(179, 231, 255);
+    background-color: white; /*rgb(255, 204, 0);*/
+    margin: 0;
+    position: fixed;
+}
+
+nav p
+{
+    color: rgb(89, 89, 89);
+}
+
+#nav-logo
+{
+    height: 80px;
+    border-width: 0px 0px 1px 0px;
+    border-style: solid;
+    border-color: rgb(179, 231, 255); 
+}
+
+#logo
+{
+    height: 70px;
+}
+
+a:link
+{
+    text-decoration: none;
+}
+
+li
+{
+    list-style-type: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+div.list-menu
+{
+    margin-top: 30px;
+}
+
+header
+{
+    margin-left: 21vh;
+    height: 80px;
+    background-color: white; /*rgb(51, 204, 51);*/
+}
+
+section
+{
+    padding-left: 21vh;
+}
+
+.content
+{
+    padding: 110px 10px 20px 10px;
+}
+

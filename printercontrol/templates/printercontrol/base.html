@@ -12,16 +12,45 @@
     </head>
 
     <body>
-        <header>
-
-        </header>
 
         <nav>
-
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <div class="d-flex align-items-center justify-content-center mb-5" id="nav-logo">
+                            <img src="{% static 'account/img/logoPrintiPy.png' %}" alt="Logo" class="ml-2" id="logo">
+                            <h4 class="text-secondary ml-4">Utilisateur connecter</h4>
+                        </div>
+                        <div class="list-menu">
+                            <ul class="list-group list-group-flush">
+                                <a href="#"><li class="list-group-item list-group-item-action"><i class="fas fa-home d-flex text-danger"><p class="ml-3">Tableau de bord</p></i></li></a>
+                                <a href="#"><li class="list-group-item list-group-item-action"><i class="fas fa-crown d-flex text-primary"><p class="ml-3">Controle</p></i></li></a>
+                                <a href="#"><li class="list-group-item list-group-item-action"><i class="fas fa-sliders-h d-flex text-success"><p class="ml-3">Prépare</p></i></li></a>
+                                <a href="#"><li class="list-group-item list-group-item-action"><i class="fas fa-eye d-flex text-warning"><p class="ml-3">Surveille</p></i></li></a>
+                                <a href="#"><li class="list-group-item list-group-item-action"><i class="fas fa-wrench d-flex text-info"><p class="ml-3">Paramètre</p></i></li></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </nav>
 
-        {% block content %}
-        {% endblock content %}
+        <header class="fixed-top">
+            <div class="container-fluid h-100">
+                <div class="row h-100">
+                    <div class="col-12 d-flex align-items-center justify-content-between">
+                        <a href="#"><i class="fas fa-home fa-2x"></i></a>
+                        <a href="#"><i class="fas fa-cogs fa-2x"></i></a>
+                        <a href="#"><i class="fas fa-door-open fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section>
+            {% block content %}
+            {% endblock content %}
+        </section>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
