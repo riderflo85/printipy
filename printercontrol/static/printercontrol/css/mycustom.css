@@ -65,6 +65,33 @@ section
 
 .content
 {
-    padding: 110px 10px 20px 10px;
+    padding: 110px 20px 20px 20px;
 }
 
+.widget
+{
+    background-color: white;
+    border: 1px solid rgb(217, 217, 217);
+    border-radius: 10px;
+}
+
+.badge-connect
+{
+    background-color: #dcefdd; 
+    color: #4caf50;
+    border: 1px solid #95d097;
+}
+
+.badge-noconnect
+{
+    background-color: #ffebee; 
+    color: #f44336;
+    border: 1px solid #f98E86;
+}
+
+.badge-chrono
+{
+    background-color: #ffecb3;
+    color: #ff8205;
+    border: 1px solid #ffbf80;
+}
