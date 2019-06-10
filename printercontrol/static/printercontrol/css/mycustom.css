@@ -95,3 +95,23 @@ section
     color: #ff8205;
     border: 1px solid #ffbf80;
 }
+
+.style-chart
+{
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.percent
+{
+    position: absolute;
+    margin-top: 9.5vh;
+    width: 200px;
+}
+
+.title-graph
+{
+    text-align: center;
+}
