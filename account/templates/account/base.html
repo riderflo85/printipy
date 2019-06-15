@@ -17,7 +17,11 @@
                     <div class="col-12 pt-3 px-5 text-center d-flex justify-content-between">
                         <a href="{% url 'account:index' %}"><img src="{% static 'account/img/logoPrintiPy.png' %}" alt="logo" class="img-fluid"></a>
                         <h1 class="text-warning align-self-center"><i class="text-primary">PrintiPy Controle</i> vous permet de controlez l'intégralité de votre imprimante 3D</h1>
-                        <a class="align-self-center" href="{% url 'account:minidashboard' %}"><i class="fas fa-street-view fa-3x"></i></a>
+                        {% if user.is_authenticated %}
+                        <a class="btn btn-primary align-self-center" href="{% url 'account:sign_out' %}">Déconnexion <i class="fas fa-sign-out-alt"></i></a>
+                        {% else %}
+                        <a class="align-self-center" href="{% url 'account:sign_up' %}"><i class="fas fa-user-plus fa-3x"></i></a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
