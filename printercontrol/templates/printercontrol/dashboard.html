@@ -10,8 +10,8 @@
                     <p class="lead">Imprimante CR-10S</p>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConnect">Connexion</button>
-                    <h4><span class="badge badge-pill badge-noconnect">Non-connecter</span></h4>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConnect" id="btnConnect">Connexion</button>
+                    <h4><span class="badge badge-pill badge-noconnect" id="printerStatus">Non-connecter</span></h4>
                 </div>
                 <!-- Modal -->
                 <div class="modal fade" id="modalConnect" tabindex="-1" role="dialog" aria-labelledby="modalConnectLabel" aria-hidden="true">
@@ -58,7 +58,7 @@
 
                             </div><!-- end .modal-body -->
                             <div class="modal-footer d-flex justify-content-between">
-                                <button type="button" class="btn btn-success">Enregistrer</button>
+                                <button type="button" class="btn btn-success" data-dismiss="modal" id="saveConfig">Enregistrer</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                             </div><!-- end .modal-footer -->
                         </div><!-- end .modal-content -->
