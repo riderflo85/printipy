@@ -1,6 +1,176 @@
 {% extends 'printercontrol/base.html' %}
 {% block content %}
 
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
 
+            <!-- Block 'moove' -->
+            <div class="col-12 col-lg-4 mb-3">
+                <div class="card card-moove-border">
+                    <h4 class="card-header card-moove-bg text-white text-center">Déplacement</h4>
+                    <div class="card-body">
+                        <!-- Speed -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="speedMotors">Vitesse</label>
+                            </div>
+                            <select name="speed" class="custom-select" id="speedMotors">
+                                <option selected>Choisissez une vitesse de déplacement</option>
+                                <option value="150">15mm/s</option>
+                                <option value="300">30mm/s</option>
+                                <option value="500">50mm/s</option>
+                                <option value="800">80mm/s</option>
+                                <option value="1000">100mm/s</option>
+                                <option value="1500">150mm/s</option>
+                                <option value="2000">200mm/s</option>
+                                <option value="2500">250mm/s</option>
+                                <option value="3000">300mm/s</option>
+                            </select>
+                        </div>
+                        <!-- Distance -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="distanceMotors">Distance</label>
+                            </div>
+                            <select name="distance" class="custom-select" id="distanceMotors">
+                                <option selected>Choisissez une distance de déplacement</option>
+                                <option value="1">1mm</option>
+                                <option value="5">5mm</option>
+                                <option value="10">10mm</option>
+                                <option value="20">20mm</option>
+                                <option value="30">30mm</option>
+                                <option value="40">40mm</option>
+                                <option value="50">50mm</option>
+                                <option value="100">100mm</option>
+                                <option value="150">150mm</option>
+                                <option value="200">200mm</option>
+                            </select>
+                        </div>
+                        <!-- Button control -->
+                        <button type="button" class="btn btn-primary btn-block" id="btnHome"><i class="fas fa-home"></i> Home</button>
+                        <!-- Axe X -->
+                        <div class="d-flex justify-content-around my-2">
+                            <button type="button" class="btn btn-info btn-size"><strong>X </strong> <i class="fas fa-plus"></i></button>
+                            <button type="button" class="btn btn-info btn-size"><strong>X </strong> <i class="fas fa-minus"></i></button>
+                        </div>
+                        <!-- Axe Y -->
+                        <div class="d-flex justify-content-around my-2">
+                            <button type="button" class="btn btn-info btn-size"><strong>Y </strong> <i class="fas fa-plus"></i></button>
+                            <button type="button" class="btn btn-info btn-size"><strong>Y </strong> <i class="fas fa-minus"></i></button>
+                        </div>
+                        <!-- Axe Z -->
+                        <div class="d-flex justify-content-around my-2">
+                            <button type="button" class="btn btn-info btn-size"><strong>Z </strong> <i class="fas fa-plus"></i></button>
+                            <button type="button" class="btn btn-info btn-size"><strong>Z </strong> <i class="fas fa-minus"></i></button>
+                        </div>
+                        <!-- Stepper -->
+                        <div class="d-flex justify-content-around my-2">
+                            <button type="button" class="btn btn-success btn-size"><strong>Stepper On</strong></button>
+                            <button type="button" class="btn btn-danger btn-size"><strong>Stepper Off</strong></button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end .col-12 col-lg-4 -->
+
+            <!-- Block 'temperature' -->
+            <div class="col-12 col-lg-4 mb-3">
+                <div class="card card-temp-border">
+                    <h4 class="card-header card-temp-bg text-white text-center">Température</h4>
+                    <div class="card-body">
+                        <!-- Switch nozzle -->
+                        <div>
+                            <div class="custom-control custom-switch d-flex justify-content-between p-0">
+                                <p>Buse</p>
+                                <input type="checkbox" class="custom-control-input" id="nozzleSwitch">
+                                <label class="custom-control-label" for="nozzleSwitch"></label>
+                            </div>
+                            <div class="pb-5">
+                                <div class="input-group ajust mx-auto">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-outline-secondary" type="button" id="btnPlus"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Ajust temp">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button" id="btnMoins"><i class="fas fa-minus"></i></button>
+                                    </div>
+                                </div>
+                                <label for="rangeTempNozzle"></label>
+                                <input type="range" class="custom-range" min="0" max="280" step="0.5" id="rangeTempNozzle">
+                            </div>
+                        </div>
+                        <!-- Switch bed -->
+                        <div>
+                            <div class="custom-control custom-switch d-flex justify-content-between p-0">
+                                <p>Plateau</p>
+                                <input type="checkbox" class="custom-control-input" id="bedSwitch">
+                                <label class="custom-control-label" for="bedSwitch"></label>
+                            </div>
+                            <div>
+                                <div class="input-group ajust mx-auto">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-outline-secondary" type="button" id="btnPlus"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Ajust temp">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button" id="btnMoins"><i class="fas fa-minus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pb-3">
+                                <label for="rangeTempNozzle"></label>
+                                <input type="range" class="custom-range" min="0" max="280" step="0.5" id="rangeTempNozzle">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end .col-12 col-lg-4 -->
+
+            <!-- Block 'filament' -->
+            <div class="col-12 col-lg-4 mb-3">
+                <div class="card card-filam-border">
+                    <h4 class="card-header card-filam-bg text-white text-center">Filament</h4>
+                    <div class="card-body">
+                        <p class="lead text-center">Extrudeur</p>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="distanceExtrude">Distance</label>
+                            </div>
+                            <select name="distance" class="custom-select" id="distanceExtrude">
+                                <option selected>Choisissez une distance d'extrusion</option>
+                                <option value="1">1mm</option>
+                                <option value="2">2mm</option>
+                                <option value="3">3mm</option>
+                                <option value="4">4mm</option>
+                                <option value="5">5mm</option>
+                                <option value="6">6mm</option>
+                                <option value="7">7mm</option>
+                                <option value="8">8mm</option>
+                                <option value="9">9mm</option>
+                                <option value="10">10mm</option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-around mb-3">
+                            <button type="button" class="btn btn-info btn-size">Sortir du filament</button>
+                            <button type="button" class="btn btn-info btn-size">Retirer du filament</button>
+                        </div>
+                        <div>
+                            <p class="lead text-center">Changement de filament</p>
+                        </div>
+                        <div class="d-flex justify-content-around mb-3">
+                            <button type="button" class="btn btn-info btn-size">Retirer filament PLA</button>
+                            <button type="button" class="btn btn-info btn-size">Retirer filament PLA+</button>
+                        </div>
+                        <div class="d-flex justify-content-around mb-3">
+                            <button type="button" class="btn btn-info btn-size">Retirer filament ABS</button>
+                            <button type="button" class="btn btn-info btn-size">Retirer filament ABS+</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end .col-12 col-lg-4 -->
+
+        </div><!-- end .row -->
+    </div>
+</div>
 
 {% endblock content %}

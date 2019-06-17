@@ -115,3 +115,47 @@ section
 {
     text-align: center;
 }
+
+.card-moove-border
+{
+    border: 1px solid #8205ff;
+}
+
+.card-moove-bg
+{
+    background-color: #8205ff;
+    border-bottom: 1px solid #8205ff; 
+}
+
+.card-temp-border
+{
+    border: 1px solid #00cc33;
+}
+
+.card-temp-bg
+{
+    border-bottom: 1px solid #00cc33;
+    background-color: #00cc33;
+}
+
+.card-filam-border
+{
+    border: 1px solid #ff751a;
+}
+
+.card-filam-bg
+{
+    border-bottom: 1px solid #ff751a;
+    background-color: #ff751a;
+}
+
+.ajust
+{
+    width: 40%;
+    margin-bottom: 15px;
+}
+
+.btn-size
+{
+    width: 40%;
+}
