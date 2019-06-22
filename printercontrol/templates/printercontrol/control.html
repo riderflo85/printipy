@@ -1,5 +1,6 @@
 {% extends 'printercontrol/base.html' %}
 {% block content %}
+{% load static %}
 
 <div class="content">
     <div class="container-fluid">
@@ -88,15 +89,15 @@
                             <div class="pb-5">
                                 <div class="input-group ajust mx-auto">
                                     <div class="input-group-prepend">
-                                        <button class="btn btn-outline-secondary" type="button" id="btnPlus"><i class="fas fa-plus"></i></button>
+                                        <button class="btn btn-outline-secondary" type="button" id="btnPlusNozzle"><i class="fas fa-plus"></i></button>
                                     </div>
-                                    <input type="text" class="form-control" aria-label="Ajust temp" id="ajustTempNozzle">
+                                    <input type="number" min="0" class="form-control not-arrow" aria-label="Ajust temp" id="ajustTempNozzle">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="btnMoins"><i class="fas fa-minus"></i></button>
+                                        <button class="btn btn-outline-secondary" type="button" id="btnMoinsNozzle"><i class="fas fa-minus"></i></button>
                                     </div>
                                 </div>
                                 <label for="rangeTempNozzle"></label>
-                                <input type="range" class="custom-range" min="0" max="280" step="0.5" id="rangeTempNozzle">
+                                <input type="range" class="custom-range" min="0" max="280" step="1" id="rangeTempNozzle">
                             </div>
                         </div>
                         <!-- Switch bed -->
@@ -109,17 +110,17 @@
                             <div>
                                 <div class="input-group ajust mx-auto">
                                     <div class="input-group-prepend">
-                                        <button class="btn btn-outline-secondary" type="button" id="btnPlus"><i class="fas fa-plus"></i></button>
+                                        <button class="btn btn-outline-secondary" type="button" id="btnPlusBed"><i class="fas fa-plus"></i></button>
                                     </div>
-                                    <input type="text" class="form-control" aria-label="Ajust temp" id="ajustTempBed">
+                                    <input type="number" min="0" class="form-control not-arrow" aria-label="Ajust temp" id="ajustTempBed">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="btnMoins"><i class="fas fa-minus"></i></button>
+                                        <button class="btn btn-outline-secondary" type="button" id="btnMoinsBed"><i class="fas fa-minus"></i></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="pb-3">
                                 <label for="rangeTempNozzle"></label>
-                                <input type="range" class="custom-range" min="0" max="280" step="0.5" id="rangeTempNozzle">
+                                <input type="range" class="custom-range" min="0" max="80" step="1" id="rangeTempBed">
                             </div>
                         </div>
                     </div>
@@ -172,5 +173,7 @@
         </div><!-- end .row -->
     </div>
 </div>
+
+<script src="{% static 'printercontrol/js/controltemp.js' %}"></script>
 
 {% endblock content %}
