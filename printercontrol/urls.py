@@ -5,4 +5,5 @@ app_name='printercontrol'
 urlpatterns = [
     path('dashboard', views.dashboard, name='dashboard'),
     path('controlpack', views.controlpack, name='controlpack'),
+    path('prepare', views.prepare, name='prepare'),
 ]

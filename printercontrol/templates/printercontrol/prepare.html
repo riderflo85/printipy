@@ -1,0 +1,94 @@
+{% extends 'printercontrol/base.html' %}
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Block bed leveling -->
+            <div class="col-12 col-lg-6 widget p-3">
+                <div class="text-center">
+                    <p class="lead">Nivelage du plateau</p>
+                    <hr>
+                </div>
+                <div class="btn-and-status">
+                    <button type="button" class="btn btn-primary" id="btnLeveling">Activation du nivelage du plateau</button>
+                    <h4><span class="badge badge-pill badge-chrono" id="statusLeveling">Non activer</span></h4>
+                </div>
+                <div class="btn-and-status">
+                    <button type="button" class="btn btn-pos1">Position 1</button>
+                    <h4><span class="badge badge-pill badge-pos" id="statusPos1">Pas atteint</span></h4>
+                </div>
+                <div class="btn-and-status">
+                    <button type="button" class="btn btn-pos2">Position 2</button>
+                    <h4><span class="badge badge-pill badge-pos" id="statusPos2">Pas atteint</span></h4>
+                </div>
+                <div class="btn-and-status">
+                    <button type="button" class="btn btn-pos3">Position 3</button>
+                    <h4><span class="badge badge-pill badge-pos" id="statusPos3">Pas atteint</span></h4>
+                </div>
+                <div class="btn-and-status">
+                    <button type="button" class="btn btn-pos4">Position 4</button>
+                    <h4><span class="badge badge-pill badge-pos" id="statusPos4">Pas atteint</span></h4>
+                </div>
+                <div class="btn-and-status">
+                    <button type="button" class="btn btn-pos5">Position 5</button>
+                    <h4><span class="badge badge-pill badge-pos" id="statusPos5">Pas atteint</span></h4>
+                </div>
+                <div class="btn-and-status">
+                    <button type="button" class="btn btn-success">Position home</button>
+                    <h4><span class="badge badge-pill badge-chrono" id="statusPos5">Plateau non réglé</span></h4>
+                </div>
+            </div>
+            <!-- Graph Bed -->
+            <div class="col-12 col-lg-4 offset-lg-1 widget graph-bed p-3">
+                <div class="text-center">
+                    <p class="lead">Repère des points de contrôles</p>
+                    <hr>
+                </div>
+                <div class="align-graph">
+                    <div class="graph-bed-bg">
+                        <div class="graph-part1">
+                            <div class="graph-pos2"></div>
+                            <div class="graph-pos3"></div>
+                        </div>
+                        <div class="graph-part2">
+                            <div class="graph-pos5"></div>
+                        </div>
+                        <div class="graph-part3">
+                            <div class="graph-pos1"></div>
+                            <div class="graph-pos4"></div>
+                        </div>
+                        <div class="graph-part4">
+                            <div class="graph-home"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3 mt-lg-5">
+            <div class="col-12 col-lg-3 offset-lg-1 widget p-3">
+                <div class="text-center">
+                    <p class="lead">Pré-chauffage</p>
+                    <hr>
+                </div>
+                <div>
+                    <div class="btn-preheat">
+                        <button type="button" class="btn btn-info">PLA</button>
+                        <button type="button" class="btn btn-info">PLA+</button>
+                    </div>
+                    <div class="btn-preheat">
+                        <button type="button" class="btn btn-info">ABS</button>
+                        <button type="button" class="btn btn-info">ABS+</button>
+                    </div>
+                    <div class="btn-preheat">
+                        <button type="button" class="btn btn-info">WOOD</button>
+                        <button type="button" class="btn btn-info">FLEX</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

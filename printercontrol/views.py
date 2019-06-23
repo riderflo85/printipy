@@ -6,3 +6,6 @@ def dashboard(request):
 
 def controlpack(request):
     return render(request, 'printercontrol/control.html')
+
+def prepare(request):
+    return render(request, 'printercontrol/prepare.html')

@@ -11,7 +11,7 @@ nav
     border-width: 0px 1px 0px 0px;
     border-style: solid;
     border-color: rgb(179, 231, 255);
-    background-color: white; /*rgb(255, 204, 0);*/
+    background-color: white;
     margin: 0;
     position: fixed;
 }
@@ -55,7 +55,7 @@ header
 {
     margin-left: 21vh;
     height: 80px;
-    background-color: white; /*rgb(51, 204, 51);*/
+    background-color: white;
 }
 
 section
@@ -94,6 +94,13 @@ section
     background-color: #ffecb3;
     color: #ff8205;
     border: 1px solid #ffbf80;
+}
+
+.badge-pos
+{
+    background-color: #ccccff;
+    color: #6666ff;
+    border: 1px solid #8080ff;
 }
 
 .style-chart
@@ -175,3 +182,194 @@ input.not-arrow::-webkit-outer-spin-button
     margin: 0;
 }
 /**************************************************************/
+
+.btn-and-status
+{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+div.btn-and-status h4
+{
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.graph-bed
+{
+    height: 400px;
+}
+
+.align-graph
+{
+    display: flex;
+    justify-content: center;
+}
+
+.graph-bed-bg
+{
+    background-color: #cccccc;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #8c7373;
+    border-radius: 10px;
+}
+
+.graph-part1
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.graph-part2
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 216px;
+}
+
+.graph-part3
+{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.graph-part4
+{
+    display: flex;
+    justify-content: start;
+    padding-left: 3px;
+}
+
+.graph-home
+{
+    background-color: #00cc00;
+    width: 20px;
+    height: 20px;
+    border: 0px;
+    border-radius: 10px;
+}
+
+.graph-pos1
+{
+    background-color: #00cc99;
+    width: 20px;
+    height: 20px;
+    border: 0px;
+    border-radius: 10px;
+}
+
+.graph-pos2
+{
+    background-color: #9900ff;
+    width: 20px;
+    height: 20px;
+    border: 0px;
+    border-radius: 10px;
+}
+
+.graph-pos3
+{
+    background-color: #ff0021;
+    width: 20px;
+    height: 20px;
+    border: 0px;
+    border-radius: 10px;
+}
+
+.graph-pos4
+{
+    background-color: #ff8000;
+    width: 20px;
+    height: 20px;
+    border: 0px;
+    border-radius: 10px;
+}
+
+.graph-pos5
+{
+    background-color: #0066ff;
+    width: 20px;
+    height: 20px;
+    border: 0px;
+    border-radius: 10px;
+}
+
+.btn-pos1
+{
+    background-color: #00cc99;
+    color: white;
+}
+
+.btn-pos1:hover
+{
+    background-color: #009973;
+    color: white;
+}
+
+.btn-pos2
+{
+    background-color: #9900ff;
+    color: white;
+}
+
+.btn-pos2:hover
+{
+    background-color: #6b00b3;
+    color: white;
+}
+
+.btn-pos3
+{
+    background-color: #ff0021;
+    color: white;
+}
+
+.btn-pos3:hover
+{
+    background-color: #b30018;
+    color: white;
+}
+
+.btn-pos4
+{
+    background-color: #ff8000;
+    color: white;
+}
+
+.btn-pos4:hover
+{
+    background-color: #cc6600;
+    color: white;
+}
+
+.btn-pos5
+{
+    background-color: #0066ff;
+    color: white;
+}
+
+.btn-pos5:hover
+{
+    background-color: #0047b3;
+    color: white;
+}
+
+hr
+{
+    background-color: rgb(217, 217, 217);
+}
+
+.btn-preheat
+{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
