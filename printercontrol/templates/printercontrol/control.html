@@ -17,7 +17,7 @@
                                 <label class="input-group-text" for="speedMotors">Vitesse</label>
                             </div>
                             <select name="speed" class="custom-select" id="speedMotors">
-                                <option selected>Choisissez une vitesse de déplacement</option>
+                                <option disabled selected>Choisissez une vitesse de déplacement</option>
                                 <option value="150">15mm/s</option>
                                 <option value="300">30mm/s</option>
                                 <option value="500">50mm/s</option>
@@ -35,7 +35,7 @@
                                 <label class="input-group-text" for="distanceMotors">Distance</label>
                             </div>
                             <select name="distance" class="custom-select" id="distanceMotors">
-                                <option selected>Choisissez une distance de déplacement</option>
+                                <option disabled selected>Choisissez une distance de déplacement</option>
                                 <option value="1">1mm</option>
                                 <option value="5">5mm</option>
                                 <option value="10">10mm</option>
@@ -46,6 +46,17 @@
                                 <option value="100">100mm</option>
                                 <option value="150">150mm</option>
                                 <option value="200">200mm</option>
+                            </select>
+                        </div>
+                        <!-- Type position (relative or absolute) -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="typePos">Type de position</label>
+                            </div>
+                            <select name="distance" class="custom-select" id="distanceMotors">
+                                <option disabled>Choisissez le type de position (relative ou absolu)</option>
+                                <option selected value="relative">Relative</option>
+                                <option value="absolute">Absolu</option>
                             </select>
                         </div>
                         <!-- Button control -->
