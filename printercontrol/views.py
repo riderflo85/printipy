@@ -1,13 +1,17 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def dashboard(request):
     return render(request, 'printercontrol/dashboard.html')
 
+@login_required
 def controlpack(request):
     return render(request, 'printercontrol/control.html')
 
+@login_required
 def prepare(request):
     return render(request, 'printercontrol/prepare.html')
 

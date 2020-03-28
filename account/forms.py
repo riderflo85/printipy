@@ -50,3 +50,20 @@ class SignupForm(forms.Form):
             attrs={'placeholder': 'Mot de passe', 'class': 'form-control'}
         ),
     )
+
+
+class CreatePrinter(forms.Form):
+    name = forms.CharField(
+        label='name',
+        max_length=150,
+        widget=forms.TextInput(
+            attrs={'placeholder': "Nom de l'imprimante", 'class': 'form-control'}
+        ),
+    )
+    model = forms.CharField(
+        label='model',
+        max_length=150,
+        widget=forms.TextInput(
+            attrs={'placeholder': "Model de l'imprimante", 'class': 'form-control'}
+        ),
+    )
