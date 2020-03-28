@@ -9,8 +9,6 @@ try {
 
         btnConnect.textContent = 'Dé-connexion';
         btnConnect.classList.replace('btn-primary', 'btn-info');
-        btnConnect.removeAttribute('data-toggle');
-        btnConnect.removeAttribute('data-target');
     });
 
     btnConnect.addEventListener('click', function (event) {
@@ -20,10 +18,8 @@ try {
 
             this.textContent = 'Connexion';
             this.classList.replace('btn-info', 'btn-primary');
-            this.setAttribute('data-toggle', 'modal');
-            this.setAttribute('data-target', '#modalConnect');
         } else {
-            // Pass
+            $('#modalConnect').modal();
         }
     });
 } catch (error) {
