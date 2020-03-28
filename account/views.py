@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from .forms import LoginForm, SignupForm
 
 
-def  index(request):
+def index(request):
     context = {'error': False}
 
     if request.method == 'POST':
