@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'printipy_db',
     'USER': 'pi',
     'PASSWORD': 'tiflo300',
-    'HOST': '192.168.1.17',
+    'HOST': '192.168.1.23',
     'PORT': '5432',
     }
 }
