@@ -34,9 +34,13 @@ def connect_printer(request):
         time.sleep(3)
 
         if pr.is_open():
-            printers['id_printer'].append(id_printer)
-            printers['instance_printer'].append(pr)
-            return JsonResponse({"connected": True})
+            try:
+                test = printers['id_printer'].index(id_printer)
+            except ValueError:
+                printers['id_printer'].append(id_printer)
+                printers['instance_printer'].append(pr)
+            finally:
+                return JsonResponse({"connected": True})
         else:
             return JsonResponse({"connected": False})
     # else:
