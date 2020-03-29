@@ -1,7 +1,7 @@
 {% extends 'printercontrol/base.html' %}
+{% load static %}
 
 {% block content %}
-
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -108,5 +108,10 @@
         </div>
     </div>
 </div>
-
 {% endblock content %}
+
+{% block script %}
+<script src="{% static 'printercontrol/js/connectprinter.js' %}"></script>
+<script src="{% static 'printercontrol/js/temperatureEasyPieChart.js' %}"></script>
+<script src="{% static 'printercontrol/js/temperatureChartJs.js' %}"></script>
+{% endblock script %}
