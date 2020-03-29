@@ -62,3 +62,17 @@ def mouv(request):
             # return JsonResponse({"state": "error"})
     # else:
         # return error 404
+
+def disconnect(request):
+    if request.method == 'POST':
+        print_num = int(request.POST['id_printer'])
+        id_printer = request.user.printer_set.get(pk=print_num).id
+
+        index_pr = printers['id_printer'].index(id_printer)
+        pr = printers['instance_printer'][index_pr]
+        pr.close()
+
+        if pr.is_open():
+            return JsonResponse({"disconnected": False})
+        else:
+            return JsonResponse({"disconnected": True})
