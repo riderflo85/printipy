@@ -9,7 +9,10 @@ from .instance import printers
 
 @login_required
 def dashboard(request):
-    return render(request, 'printercontrol/dashboard.html')
+    printers_user = request.user.printer_set.all()
+    context = {'printers': printers_user}
+
+    return render(request, 'printercontrol/dashboard.html', context)
 
 @login_required
 def controlpack(request):
@@ -24,7 +27,7 @@ def connect_printer(request):
         port = request.POST['port']
         baudrate = int(request.POST['baudrate'])
         print_num = int(request.POST['id_printer'])
-        id_printer = request.user.printer_set.get(pk=print_num).id
+        printer = request.user.printer_set.get(pk=print_num)
 
         pr = PrinterMachine()
         pr.port = port
@@ -35,11 +38,13 @@ def connect_printer(request):
 
         if pr.is_open():
             try:
-                test = printers['id_printer'].index(id_printer)
+                test = printers['id_printer'].index(printer.id)
             except ValueError:
-                printers['id_printer'].append(id_printer)
+                printers['id_printer'].append(printer.id)
                 printers['instance_printer'].append(pr)
             finally:
+                printer.status = 'Connectée'
+                printer.save()
                 return JsonResponse({"connected": True})
         else:
             return JsonResponse({"connected": False})
