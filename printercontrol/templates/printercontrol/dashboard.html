@@ -12,7 +12,12 @@
                 {% if printers.0.status == 'Non connectée' %}
                 <div class="d-flex justify-content-between">
                     <button type="button" class="btn btn-primary" id="btnConnect">Connexion</button>
-                    <h4><span class="badge badge-pill badge-noconnect" id="printerStatus">{{ printers.0.status }}</span></h4>
+                    <h4><span class="badge badge-pill badge-noconnect" id="printerStatus" data-status="{{ printers.0.status }}">{{ printers.0.status }}</span></h4>
+                </div>
+                {% else %}
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-info" id="btnConnect">Dé connexion</button>
+                    <h4><span class="badge badge-pill badge-connect" id="printerStatus" data-status="{{ printers.0.status }}">{{ printers.0.status }}</span></h4>
                 </div>
                 {% endif %}
                 <!-- Modal -->
@@ -30,9 +35,9 @@
                                 <!-- Port -->
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelectPort">Port série</label>
+                                        <label class="input-group-text" for="selectPort">Port série</label>
                                     </div><!-- end .input-group-prepend -->
-                                    <select class="custom-select" id="inputGroupSelectPort">
+                                    <select class="custom-select" id="selectPort">
                                         <option selected>Selectionnez un port</option>
                                         <option value="/dev/ttyUSB0">ttyUSB0</option>
                                         <option value="/dev/ttyUSB1">ttyUSB1</option>
@@ -44,9 +49,9 @@
                                 <!-- Baudrate -->
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelectBaudrate">Baudrate</label>
+                                        <label class="input-group-text" for="selectBaudrate">Baudrate</label>
                                     </div><!-- end .input-group-prepend -->
-                                    <select class="custom-select" id="inputGroupSelectBaudrate">
+                                    <select class="custom-select" id="selectBaudrate">
                                         <option selected>Selectionnez une valeur</option>
                                         <option value="250000">250000</option>
                                         <option value="230400">230400</option>
