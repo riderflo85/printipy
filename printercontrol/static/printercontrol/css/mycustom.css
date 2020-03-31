@@ -51,6 +51,29 @@ div.list-menu
     margin-top: 30px;
 }
 
+.zone-notif {
+    position: relative;
+    min-height: 200px;
+}
+
+.notif-error-header {
+    background-color: rgba(255, 26, 26, 0.8);
+    color: white;
+}
+
+.notif-error-body {
+    background-color: #ffccd4;
+}
+
+.notif-info-header {
+    background-color: #2878f0;
+    color: white;
+}
+
+.notif-info-body {
+    background-color: #9ec1fa;
+}
+
 header
 {
     margin-left: 21vh;
@@ -80,6 +103,13 @@ section
     background-color: #dcefdd; 
     color: #4caf50;
     border: 1px solid #95d097;
+}
+
+.badge-connecting
+{
+    background-color: #cfe0fc; 
+    color: #0e5bd8;
+    border: 1px solid #5793f4;
 }
 
 .badge-noconnect

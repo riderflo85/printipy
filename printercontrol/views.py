@@ -4,8 +4,12 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from .models import Printer
 from .printer import PrinterMachine
-from .instance import printers
 
+
+PRINTERS = {
+    'id_printer': [],
+    'instance_printer': []
+}
 
 @login_required
 def dashboard(request):
@@ -26,26 +30,29 @@ def connect_printer(request):
     if request.method == 'POST':
         port = request.POST['port']
         baudrate = int(request.POST['baudrate'])
-        print_num = int(request.POST['id_printer'])
-        printer = request.user.printer_set.get(pk=print_num)
+        printer_num = int(request.POST['id_printer'])
+        printer = request.user.printer_set.get(pk=printer_num)
+        pr = PrinterMachine()
+        printer_exists = PrinterMachine()
 
         try:
-            pr = printers['id_printer'].index(printer.id)
+            index_list = PRINTERS['id_printer'].index(printer.id)
+            printer_exists = PRINTERS['instance_printer'][index_list]
+            printer_exists.open()
 
         except ValueError:
-            pr = PrinterMachine()
             pr.port = port
             pr.baudrate = baudrate
             pr.timeout = 2
+            pr.open()
 
-            printers['id_printer'].append(printer.id)
-            printers['instance_printer'].append(pr)
+            PRINTERS['id_printer'].append(printer.id)
+            PRINTERS['instance_printer'].append(pr)
 
         finally:
-            pr.open()
             time.sleep(3)
 
-            if pr.is_open():
+            if pr.is_open or printer_exists.is_open:
                 printer.status = 'Connectée'
                 printer.save()
                 return JsonResponse({"connected": True})
@@ -77,14 +84,17 @@ def mouv(request):
 
 def disconnect(request):
     if request.method == 'POST':
-        print_num = int(request.POST['id_printer'])
-        id_printer = request.user.printer_set.get(pk=print_num).id
 
-        index_pr = printers['id_printer'].index(id_printer)
-        pr = printers['instance_printer'][index_pr]
+        printer_num = int(request.POST['id_printer'])
+        printer = request.user.printer_set.get(pk=printer_num)
+
+        index_pr = PRINTERS['id_printer'].index(printer.id)
+        pr = PRINTERS['instance_printer'][index_pr]
         pr.close()
+        printer.status = 'Non connectée'
+        printer.save()
 
-        if pr.is_open():
+        if pr.is_open:
             return JsonResponse({"disconnected": False})
         else:
             return JsonResponse({"disconnected": True})
