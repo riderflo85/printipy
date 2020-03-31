@@ -29,25 +29,28 @@ def connect_printer(request):
         print_num = int(request.POST['id_printer'])
         printer = request.user.printer_set.get(pk=print_num)
 
-        pr = PrinterMachine()
-        pr.port = port
-        pr.baudrate = baudrate
-        pr.timeout = 2
-        pr.open()
-        time.sleep(3)
+        try:
+            pr = printers['id_printer'].index(printer.id)
 
-        if pr.is_open():
-            try:
-                test = printers['id_printer'].index(printer.id)
-            except ValueError:
-                printers['id_printer'].append(printer.id)
-                printers['instance_printer'].append(pr)
-            finally:
+        except ValueError:
+            pr = PrinterMachine()
+            pr.port = port
+            pr.baudrate = baudrate
+            pr.timeout = 2
+
+            printers['id_printer'].append(printer.id)
+            printers['instance_printer'].append(pr)
+
+        finally:
+            pr.open()
+            time.sleep(3)
+
+            if pr.is_open():
                 printer.status = 'Connectée'
                 printer.save()
                 return JsonResponse({"connected": True})
-        else:
-            return JsonResponse({"connected": False})
+            else:
+                return JsonResponse({"connected": False})
     # else:
         # return error 404
 
