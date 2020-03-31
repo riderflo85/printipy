@@ -14,15 +14,15 @@
                     <button type="button" class="btn btn-primary" id="btnConnect">Connexion</button>
                     <h4><span class="badge badge-pill badge-noconnect" id="printerStatus" data-status="{{ printers.0.status }}">{{ printers.0.status }}</span></h4>
                 </div>
-                <div class="progress mt-2 d-none" id="connectingProgress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 50%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progressBarStatus"></div>
-                </div>
                 {% else %}
                 <div class="d-flex justify-content-between">
                     <button type="button" class="btn btn-info" id="btnConnect">Dé connexion</button>
                     <h4><span class="badge badge-pill badge-connect" id="printerStatus" data-status="{{ printers.0.status }}">{{ printers.0.status }}</span></h4>
                 </div>
                 {% endif %}
+                <div class="progress mt-2 d-none" id="connectingProgress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progressBarStatus"></div>
+                </div>
                 <!-- Modal -->
                 <div class="modal fade" id="modalConnect" tabindex="-1" role="dialog" aria-labelledby="modalConnectLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">

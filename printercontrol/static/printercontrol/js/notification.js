@@ -1,6 +1,6 @@
 function display_error(toAppendIn, message, autohide=false){
     var content = `
-        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide='${autohide}' data-delay=4000>
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide='${autohide}' data-delay=10000>
             <div class="toast-header notif-error-header">
                 <i class="fas fa-exclamation-triangle mr-3"></i>
                 <strong class="mr-auto">Erreur</strong>
@@ -13,14 +13,16 @@ function display_error(toAppendIn, message, autohide=false){
             </div>
         </div>
     `;
-    
+    if (toAppendIn.children().length > 0) {
+        toAppendIn.children().remove();
+    }
     $(content).appendTo(toAppendIn);
     $('.toast').toast('show');
 }
 
 function display_info(toAppendIn, message, autohide=false){
     let content = `
-        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide='${autohide}' data-delay=4000>
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide='${autohide}' data-delay=10000>
             <div class="toast-header notif-info-header">
                 <i class="fas fa-exclamation-circle mr-3"></i>
                 <strong class="mr-auto">Information</strong>
@@ -33,6 +35,9 @@ function display_info(toAppendIn, message, autohide=false){
             </div>
         </div>
     `;
+    if (toAppendIn.children().length > 0) {
+        toAppendIn.children().remove();
+    }
     $(content).appendTo(toAppendIn);
     $('.toast').toast('show');
 }

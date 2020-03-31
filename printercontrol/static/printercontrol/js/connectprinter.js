@@ -3,7 +3,19 @@ var statusPrinter = document.getElementById('printerStatus');
 var btnSaveConfig = document.getElementById('saveConfig');
 var listPort = document.getElementById('selectPort');
 var listBaudrate = document.getElementById('selectBaudrate');
+var divProgressBar = document.getElementById('connectingProgress');
+var progressBar = divProgressBar.children[0];
 var csrftoken = getCookie('csrftoken');
+
+var width = 1;
+function frame() {
+    width++;
+    progressBar.style.width = `${width}%`;
+}
+function inProgress() {
+    var id = setInterval(frame, 33);
+    return id;
+}
 
 $.ajaxSetup({
     beforeSend: function (xhr, settings) {
@@ -27,7 +39,11 @@ btnConnect.addEventListener('click', function() {
             success: function(data) {
                 if (data['disconnected']) {
                     statusPrinter.setAttribute('data-status', 'Non connectée');
-                    statusPrinter.classList.replace('badge-connect', 'badge-noconnect');
+                    if (statusPrinter.classList.contains('badge-connecting')){
+                        statusPrinter.classList.replace('badge-connecting', 'badge-noconnect');
+                    } else {
+                        statusPrinter.classList.replace('badge-connect', 'badge-noconnect');
+                    }
                     statusPrinter.textContent = 'Non-connectée';
                     btnConnect.textContent = 'Connexion';
                     btnConnect.classList.replace('btn-info', 'btn-primary');
@@ -49,62 +65,50 @@ btnConnect.addEventListener('click', function() {
 btnSaveConfig.addEventListener('click', function() {
     let port = listPort.value;
     let baudrate = listBaudrate.value;
-    let prograssBar = document.getElementById('connectingProgress');
+
     btnConnect.setAttribute('disabled', 'true');
     statusPrinter.classList.replace('badge-noconnect', 'badge-connecting');
     statusPrinter.textContent = 'Connexion en cours...';
-    prograssBar.classList.remove('d-none');
+    divProgressBar.classList.remove('d-none');
 
-    $.ajax({
-        url: '/control/connect_printer',
-        type: 'POST',
-        dataType: 'json',
-        data: {
-            'port': port,
-            'baudrate': baudrate,
-            'id_printer': document.getElementById('printerId').getAttribute('data-id'),
-        },
-        success: function(data) {
-            if (data['connected']) {
-                statusPrinter.setAttribute('data-status', 'Connectée');
-                statusPrinter.classList.replace('badge-noconnect', 'badge-connect');
-                statusPrinter.textContent = 'Connectée';
-                btnConnect.textContent = 'Dé-connexion';
-                btnConnect.classList.replace('btn-primary', 'btn-info');
-                let msg = "Connection avec l'imprimante établie avec succès !";
-                display_info($('#notificationZone'), msg, autohide=true);
-            } else {
-                let msg = "Impoŝsible d'établir le connection avec l'imprimante.";
-                display_error($('#notificationZone'), msg);
-                statusPrinter.classList.replace('badge-connecting', 'badge-noconnect');
-                statusPrinter.textContent = 'Non-connectée';
-            }
-            btnConnect.removeAttribute('disabled');
-            prograssBar.classList.add('d-none');
-        },
-        error: function(error) {
-            let msg = "Une erreur c'est produite: " + toString(error);
-            display_error($('#notificationZone'), msg);
-            
-        }
-    });
+    idInterval = inProgress();
+    setTimeout(function() {
+        $.ajax({
+                url: '/control/connect_printer',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    'port': port,
+                    'baudrate': baudrate,
+                    'id_printer': document.getElementById('printerId').getAttribute('data-id'),
+                },
+                success: function(data) {
+                    clearInterval(idInterval);
+                    progressBar.style.width = '0%';
+                    if (data['connected']) {
+                        statusPrinter.setAttribute('data-status', 'Connectée');
+                        statusPrinter.classList.replace('badge-connecting', 'badge-connect');
+                        statusPrinter.textContent = 'Connectée';
+                        btnConnect.textContent = 'Dé-connexion';
+                        btnConnect.classList.replace('btn-primary', 'btn-info');
+                        let msg = "Connection avec l'imprimante établie avec succès !";
+                        display_info($('#notificationZone'), msg, autohide=true);
+                    } else {
+                        let msg = "Impoŝsible d'établir le connection avec l'imprimante.";
+                        display_error($('#notificationZone'), msg);
+                        statusPrinter.classList.replace('badge-connecting', 'badge-noconnect');
+                        statusPrinter.textContent = 'Non-connectée';
+                    }
+                    btnConnect.removeAttribute('disabled');
+                    divProgressBar.classList.add('d-none');
+                },
+                error: function(error) {
+                    clearInterval(idInterval);
+                    progressBar.style.width = '0%';
+                    let msg = "Une erreur c'est produite: " + toString(error);
+                    display_error($('#notificationZone'), msg);
+                }
+            });
+    }, 10);
+    
 });
-// btnSaveConfig.addEventListener('click', function (event) {
-//     statusPrinter.textContent = 'Connecter';
-//     statusPrinter.classList.replace('badge-noconnect', 'badge-connect');
-
-//     btnConnect.textContent = 'Dé-connexion';
-//     btnConnect.classList.replace('btn-primary', 'btn-info');
-// });
-
-// btnConnect.addEventListener('click', function (event) {
-//     if (this.textContent === 'Dé-connexion') {
-//         statusPrinter.textContent = 'Non-connecter';
-//         statusPrinter.classList.replace('badge-connect', 'badge-noconnect');
-
-//         this.textContent = 'Connexion';
-//         this.classList.replace('btn-info', 'btn-primary');
-//     } else {
-//         $('#modalConnect').modal();
-//     }
-// });
