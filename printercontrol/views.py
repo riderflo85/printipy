@@ -31,11 +31,13 @@ def dashboard(request):
 
 @login_required
 def controlpack(request):
-    return render(request, 'printercontrol/control.html')
+    context = {'printers': request.user.printer_set.all()}
+    return render(request, 'printercontrol/control.html', context)
 
 @login_required
 def prepare(request):
-    return render(request, 'printercontrol/prepare.html')
+    context = {'printers': request.user.printer_set.all()}
+    return render(request, 'printercontrol/prepare.html', context)
 
 def connect_printer(request):
     if request.method == 'POST':
@@ -72,7 +74,7 @@ def connect_printer(request):
     # else:
         # return error 404
 
-def mouv(request):
+def move(request):
     if request.method == 'POST':
         speed = request.POST['speed']
         distance = request.POST['distance']
@@ -82,22 +84,24 @@ def mouv(request):
         printer_num = int(request.POST['id_printer'])
         printer = request.user.printer_set.get(pk=printer_num)
 
+        index_list = PRINTERS['id_printer'].index(printer.id)
+        printer = PRINTERS['instance_printer'][index_list]
+
         if mouv_type == 'positive':
             distance = f"{distance}"
         elif mouv_type == 'negative':
             distance = f"-{distance}"
 
         res = printer.set_type_position(type_pos)
+        print(res)
         if res == b"ok\r\n":
-            res = printer.set_mouv(mouv_type, axe, distance, speed)
+            res = printer.set_mouv("G1", axe, distance, speed)
+            print(res)
             if res == b"ok\r\n":
                 return JsonResponse({"status": "ok"})
+        else:
+            return JsonResponse({"status": "error"})
 
-        # res = object.set_mouv(all_params)
-        # if res == "ok":
-            # return JsonREsponse({"state": "ok"})
-        # else:
-            # return JsonResponse({"state": "error"})
     # else:
         # return error 404
 

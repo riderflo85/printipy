@@ -58,6 +58,13 @@
         </header>
 
         <section>
+            <ul class="nav nav-tabs tab-printer" id="tabPrinters">
+                {% for printer in printers %}
+                    <li class="nav-item">
+                        <a class="nav-link link-tab-printer" href="#" data-printer-id="{{ printer.id }}" data-printer-status="{{ printer.status }}">{{ printer.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
             {% block content %}
             {% endblock content %}
         </section>

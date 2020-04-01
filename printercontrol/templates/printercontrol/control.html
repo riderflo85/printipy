@@ -9,7 +9,7 @@
             <!-- Block 'moove' -->
             <div class="col-12 col-lg-4 mb-3">
                 <div class="card card-moove-border">
-                    <h4 class="card-header card-moove-bg text-white text-center">Déplacement</h4>
+                    <h4 class="card-header card-moove-bg text-white text-center">Déplacement <span class="text-warning spinner-grow d-none" role="status" aria-hidden="true" id="spinnerMove"></span></h4>
                     <div class="card-body">
                         <!-- Speed -->
                         <div class="input-group mb-3">
@@ -53,7 +53,7 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="typePos">Type de position</label>
                             </div>
-                            <select name="distance" class="custom-select" id="distanceMotors">
+                            <select name="distance" class="custom-select" id="typePosition">
                                 <option disabled>Choisissez le type de position (relative ou absolu)</option>
                                 <option selected value="relative">Relative</option>
                                 <option value="absolute">Absolu</option>
@@ -63,23 +63,23 @@
                         <button type="button" class="btn btn-primary btn-block" id="btnHome"><i class="fas fa-home"></i> Home</button>
                         <!-- Axe X -->
                         <div class="d-flex justify-content-around my-2">
-                            <button type="button" class="btn btn-info btn-size"><strong>X </strong> <i class="fas fa-plus"></i></button>
-                            <button type="button" class="btn btn-info btn-size"><strong>X </strong> <i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn btn-info btn-size" id="xPlus"data-axe="x" data-type="positive"><strong>X </strong> <i class="fas fa-plus"></i></button>
+                            <button type="button" class="btn btn-info btn-size" id="xMinus"data-axe="x" data-type="negative"><strong>X </strong> <i class="fas fa-minus"></i></button>
                         </div>
                         <!-- Axe Y -->
                         <div class="d-flex justify-content-around my-2">
-                            <button type="button" class="btn btn-info btn-size"><strong>Y </strong> <i class="fas fa-plus"></i></button>
-                            <button type="button" class="btn btn-info btn-size"><strong>Y </strong> <i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn btn-info btn-size" id="yPlus"data-axe="y" data-type="positive"><strong>Y </strong> <i class="fas fa-plus"></i></button>
+                            <button type="button" class="btn btn-info btn-size" id="yMinus"data-axe="y" data-type="negative"><strong>Y </strong> <i class="fas fa-minus"></i></button>
                         </div>
                         <!-- Axe Z -->
                         <div class="d-flex justify-content-around my-2">
-                            <button type="button" class="btn btn-info btn-size"><strong>Z </strong> <i class="fas fa-plus"></i></button>
-                            <button type="button" class="btn btn-info btn-size"><strong>Z </strong> <i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn btn-info btn-size" id="zPlus"data-axe="z" data-type="positive"><strong>Z </strong> <i class="fas fa-plus"></i></button>
+                            <button type="button" class="btn btn-info btn-size" id="zMinus"data-axe="z" data-type="negative"><strong>Z </strong> <i class="fas fa-minus"></i></button>
                         </div>
                         <!-- Stepper -->
                         <div class="d-flex justify-content-around my-2">
-                            <button type="button" class="btn btn-success btn-size"><strong>Stepper On</strong></button>
-                            <button type="button" class="btn btn-danger btn-size"><strong>Stepper Off</strong></button>
+                            <button type="button" class="btn btn-success btn-size" id="stepperOn"><strong>Stepper On</strong></button>
+                            <button type="button" class="btn btn-danger btn-size" id="stepperOff"><strong>Stepper Off</strong></button>
                         </div>
                     </div>
                 </div>
@@ -188,4 +188,5 @@
 
 {% block script %}
 <script src="{% static 'printercontrol/js/controltemp.js' %}"></script>
+<script src="{% static 'printercontrol/js/control.js' %}"></script>
 {% endblock script %}

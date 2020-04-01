@@ -86,9 +86,19 @@ section
     padding-left: 21vh;
 }
 
+.tab-printer {
+    padding-top: 60px;
+    background-color: white;
+    border-color: darkblue !important;
+}
+
+.link-tab-printer {
+    border-color: darkblue darkblue #fff !important;
+}
+
 .content
 {
-    padding: 110px 20px 20px 20px;
+    padding: 30px 20px 20px 20px;
 }
 
 .widget
