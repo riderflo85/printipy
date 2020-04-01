@@ -36,8 +36,11 @@ class PrinterMachine(Serial):
         self.write(bytes(order.encode('utf-8')))
         return self.__read_data(10)
 
-    def set_mouv(self, type_mouv, axe, distance):
-        order = f"{type_mouv} {axe}{distance}\n"
+    def set_mouv(self, type_mouv, axe, distance, speed=""):
+        if type_mouv.upper() == "G0":
+            order = f"{type_mouv} {axe}{distance}".upper() + '\n'
+        else:
+            order = f"{type_mouv} {axe}{distance} {speed}".upper() + '\n'
+
         self.write(bytes(order.encode('utf-8')))
         return self.__read_data(10)
-

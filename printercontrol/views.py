@@ -68,11 +68,19 @@ def mouv(request):
         type_pos = request.POST['type_pos']
         mouv_type = request.POST['mouv_type']
         axe = request.POST['axe']
+        printer_num = int(request.POST['id_printer'])
+        printer = request.user.printer_set.get(pk=printer_num)
 
         if mouv_type == 'positive':
             distance = f"{distance}"
         elif mouv_type == 'negative':
             distance = f"-{distance}"
+
+        res = printer.set_type_position(type_pos)
+        if res == b"ok\r\n":
+            res = printer.set_mouv(mouv_type, axe, distance, speed)
+            if res == b"ok\r\n":
+                return JsonResponse({"status": "ok"})
 
         # res = object.set_mouv(all_params)
         # if res == "ok":
