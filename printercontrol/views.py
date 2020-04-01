@@ -14,7 +14,18 @@ PRINTERS = {
 @login_required
 def dashboard(request):
     printers_user = request.user.printer_set.all()
-    context = {'printers': printers_user}
+
+    try:
+        for printer in printers_user:
+            index_list = PRINTERS['id_printer'].index(printer.id)
+            printer_exists = PRINTERS['instance_printer'][index_list]
+
+    except ValueError:
+        for printer in printers_user:
+            printer.status = "Non connectée"
+            printer.save()
+
+    context = {'printers': request.user.printer_set.all()}
 
     return render(request, 'printercontrol/dashboard.html', context)
 
